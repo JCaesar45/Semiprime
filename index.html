@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAISON NOIR — The Meridian Chronograph</title>
+    <meta
+      name="description"
+      content="A limited-edition automatic chronograph. Each serial verified by semiprime authentication."
+    />
+    <style>
+      :root {
+        --ink: #0a0a0b;
+        --ink-2: #121214;
+        --panel: #17171a;
+        --line: #26262b;
+        --gold: #c9a45c;
+        --gold-2: #e8cf9a;
+        --paper: #f4efe6;
+        --muted: #8a8a92;
+        --ok: #5fbf7a;
+        --bad: #cf6a6a;
+        --font-display:
+          "Didot", "Bodoni MT", "Playfair Display", Georgia, serif;
+        --font-body: "Helvetica Neue", Inter, system-ui, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(10, 10, 11, 0.82);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+      .brand {
+        font-family: var(--font-display);
+        font-size: 22px;
+        letter-spacing: 0.28em;
+        color: var(--gold-2);
+      }
+      .nav-links {
+        display: flex;
+        gap: 34px;
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-cta {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 11px 20px;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        transition: 0.25s;
+      }
+      .nav-cta:hover {
+        background: var(--gold);
+        color: var(--ink);
+      }
+      @media (max-width: 780px) {
+        .nav-links {
+          display: none;
+        }
+      }
+
+      .hero {
+        position: relative;
+        min-height: 88vh;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 40px;
+        padding: 60px 0 90px;
+      }
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding-top: 40px;
+        }
+      }
+      .hero-copy .kicker {
+        font-size: 11px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .hero-copy .kicker::before {
+        content: "";
+        width: 44px;
+        height: 1px;
+        background: var(--gold);
+      }
+      .hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(42px, 6vw, 84px);
+        line-height: 1.02;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        margin-bottom: 26px;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--gold-2);
+      }
+      .hero-sub {
+        color: var(--muted);
+        font-size: 16px;
+        max-width: 46ch;
+        margin-bottom: 34px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 16px 30px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: 0.25s;
+        font-family: inherit;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--ink);
+        border-color: var(--gold);
+      }
+      .btn-primary:hover {
+        background: var(--gold-2);
+        border-color: var(--gold-2);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--paper);
+        border-color: var(--line);
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .watch {
+        width: min(420px, 80vw);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 32% 28%,
+          #2a2a30 0%,
+          #141417 55%,
+          #08080a 100%
+        );
+        border: 2px solid var(--line);
+        box-shadow:
+          0 0 0 10px #0d0d0f,
+          0 0 0 11px var(--line),
+          0 40px 90px -20px rgba(0, 0, 0, 0.9),
+          inset 0 0 70px rgba(201, 164, 92, 0.06);
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+      .watch::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 164, 92, 0.18);
+      }
+      .dial {
+        position: relative;
+        width: 78%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+      }
+      .tick {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        transform-origin: bottom center;
+      }
+      .tick span {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        background: var(--line);
+      }
+      .tick.major span {
+        width: 2px;
+        background: var(--gold);
+        height: 12px;
+      }
+      .tick.minor span {
+        height: 6px;
+        background: #3a3a40;
+      }
+      .hand {
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        transform-origin: bottom center;
+        background: var(--gold-2);
+        border-radius: 2px;
+      }
+      .hand-hour {
+        width: 4px;
+        height: 26%;
+        margin-left: -2px;
+        background: var(--paper);
+      }
+      .hand-min {
+        width: 3px;
+        height: 36%;
+        margin-left: -1.5px;
+        background: var(--paper);
+      }
+      .hand-sec {
+        width: 1px;
+        height: 40%;
+        margin-left: -0.5px;
+        background: var(--gold);
+        transition: transform 0.08s linear;
+      }
+      .pin {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        margin: -5px 0 0 -5px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 12px rgba(201, 164, 92, 0.6);
+      }
+      .brandmark {
+        position: absolute;
+        top: 24%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-display);
+        font-size: 13px;
+        letter-spacing: 0.4em;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+
+      section {
+        padding: 100px 0;
+        border-top: 1px solid var(--line);
+      }
+      .section-head {
+        margin-bottom: 56px;
+        max-width: 62ch;
+      }
+      .section-head .label {
+        font-size: 11px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .section-head h2 {
+        font-family: var(--font-display);
+        font-size: clamp(30px, 4vw, 48px);
+        font-weight: 400;
+        line-height: 1.1;
+      }
+      .section-head p {
+        color: var(--muted);
+        margin-top: 18px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .product-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+      .gallery-main {
+        aspect-ratio: 1/1;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-main .big-watch {
+        width: 70%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 32% 28%,
+          #2a2a30 0%,
+          #141417 55%,
+          #08080a 100%
+        );
+        box-shadow:
+          0 0 0 8px #0d0d0f,
+          0 0 0 9px var(--line),
+          inset 0 0 50px rgba(201, 164, 92, 0.08);
+        position: relative;
+      }
+      .gallery-main .big-watch::before {
+        content: "";
+        position: absolute;
+        inset: 12%;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 164, 92, 0.2);
+      }
+      .thumbs {
+        display: flex;
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .thumb {
+        width: 74px;
+        height: 74px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .thumb.active {
+        border-color: var(--gold);
+      }
+      .thumb:hover {
+        border-color: var(--gold);
+      }
+      .thumb i {
+        display: block;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #2a2a30, #0b0b0d);
+        border: 1px solid var(--line);
+      }
+
+      .product-info .name {
+        font-family: var(--font-display);
+        font-size: 38px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .product-info .sku {
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+      .price {
+        font-family: var(--font-display);
+        font-size: 32px;
+        color: var(--gold-2);
+        margin-bottom: 8px;
+      }
+      .price-note {
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+
+      .opt-label {
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 26px 0 12px;
+      }
+      .opts {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .opt {
+        padding: 12px 20px;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--paper);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.2s;
+        font-family: inherit;
+      }
+      .opt:hover {
+        border-color: var(--gold);
+      }
+      .opt.active {
+        border-color: var(--gold);
+        background: rgba(201, 164, 92, 0.08);
+        color: var(--gold-2);
+      }
+      .opt small {
+        display: block;
+        font-size: 10px;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        margin-top: 3px;
+        text-transform: none;
+      }
+
+      .qty {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        margin-top: 10px;
+      }
+      .qty button {
+        width: 46px;
+        height: 46px;
+        background: transparent;
+        color: var(--paper);
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .qty button:hover {
+        color: var(--gold);
+      }
+      .qty span {
+        width: 52px;
+        text-align: center;
+        font-size: 15px;
+      }
+
+      .buy-row {
+        display: flex;
+        gap: 14px;
+        margin-top: 34px;
+        flex-wrap: wrap;
+      }
+      .buy-row .btn {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .verify {
+        margin-top: 34px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        background: var(--ink-2);
+      }
+      .verify h4 {
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+      .verify-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .verify-row input {
+        flex: 1;
+        min-width: 160px;
+        background: transparent;
+        border: 1px solid var(--line);
+        padding: 13px 16px;
+        color: var(--paper);
+        font-family: var(--font-body);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+      }
+      .verify-row input:focus {
+        outline: none;
+        border-color: var(--gold);
+      }
+      .verify-row button {
+        padding: 13px 22px;
+        background: transparent;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.2s;
+        font-family: inherit;
+      }
+      .verify-row button:hover {
+        background: var(--gold);
+        color: var(--ink);
+      }
+      .verify-result {
+        margin-top: 14px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        min-height: 20px;
+      }
+      .verify-result.ok {
+        color: var(--ok);
+      }
+      .verify-result.bad {
+        color: var(--bad);
+      }
+
+      .specs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .spec {
+        background: var(--ink);
+        padding: 30px 26px;
+      }
+      .spec dt {
+        font-size: 11px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .spec dd {
+        font-size: 15px;
+        color: var(--paper);
+      }
+
+      .feature-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      @media (max-width: 800px) {
+        .feature-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .feature {
+        background: var(--ink);
+        padding: 42px 32px;
+      }
+      .feature .num {
+        font-family: var(--font-display);
+        font-size: 13px;
+        letter-spacing: 0.3em;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+      .feature h3 {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 12px;
+      }
+      .feature p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 60px 0 40px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .foot-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      .foot-brand {
+        font-family: var(--font-display);
+        font-size: 20px;
+        letter-spacing: 0.28em;
+        color: var(--gold-2);
+      }
+      .foot-links {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .foot-links a:hover {
+        color: var(--gold);
+      }
+      .foot-bottom {
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <div class="brand">MAISON NOIR</div>
+        <nav class="nav-links">
+          <a href="#product">The Watch</a>
+          <a href="#craft">Craft</a>
+          <a href="#verify">Authenticate</a>
+          <a href="#specs">Specifications</a>
+        </nav>
+        <a href="#product" class="nav-cta">Reserve Yours</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <div class="kicker">Limited Edition · 250 Pieces</div>
+          <h1 class="hero-title">
+            The Meridian
+            <br />
+            <em>Chronograph</em>
+          </h1>
+          <p class="hero-sub">
+            A hand-finished automatic chronograph in blackened steel and 18k
+            gold. Every serial number is cryptographically verified by semiprime
+            authentication — a mathematical signature that cannot be forged,
+            only factored.
+          </p>
+          <div class="hero-actions">
+            <a href="#product" class="btn btn-primary">Reserve — $12,400</a>
+            <a href="#verify" class="btn btn-ghost">Verify a Serial</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="watch" id="heroWatch">
+            <div class="brandmark">Maison Noir</div>
+            <div class="dial" id="dial"></div>
+            <div class="pin"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="product">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="label">The Piece</div>
+            <h2>Meridian Chronograph — Obsidian</h2>
+            <p>
+              Reference MN-MC-01. Blackened 316L steel case, 40mm. Hand-wound
+              caliber MN-01 with 72-hour power reserve. Sapphire crystal,
+              exhibition caseback, and a serial number that proves itself.
+            </p>
+          </div>
+
+          <div class="product-grid">
+            <div>
+              <div class="gallery-main">
+                <div class="big-watch"></div>
+              </div>
+              <div class="thumbs">
+                <div class="thumb active"><i></i></div>
+                <div class="thumb"><i></i></div>
+                <div class="thumb"><i></i></div>
+                <div class="thumb"><i></i></div>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <div class="name">Meridian Chronograph</div>
+              <div class="sku">Ref. MN-MC-01 · Serial pending</div>
+              <div class="price" id="priceDisplay">$12,400</div>
+              <div class="price-note">Includes lifetime servicing</div>
+
+              <div class="opt-label">Strap</div>
+              <div class="opts" id="strapOpts">
+                <button class="opt active" data-strap="alligator" data-add="0">
+                  Alligator
+                  <small>Black · included</small>
+                </button>
+                <button class="opt" data-strap="steel" data-add="0">
+                  Steel Bracelet
+                  <small>Brushed · included</small>
+                </button>
+                <button class="opt" data-strap="gold" data-add="1200">
+                  Gold Mesh
+                  <small>18k · +$1,200</small>
+                </button>
+              </div>
+
+              <div class="opt-label">Case Finish</div>
+              <div class="opts" id="finishOpts">
+                <button class="opt active" data-finish="obsidian" data-add="0">
+                  Obsidian
+                  <small>Blackened steel</small>
+                </button>
+                <button class="opt" data-finish="champagne" data-add="800">
+                  Champagne
+                  <small>Gold PVD · +$800</small>
+                </button>
+              </div>
+
+              <div class="opt-label">Quantity</div>
+              <div class="qty">
+                <button id="qtyMinus" aria-label="decrease">−</button>
+                <span id="qtyVal">1</span>
+                <button id="qtyPlus" aria-label="increase">+</button>
+              </div>
+
+              <div class="buy-row">
+                <button class="btn btn-primary" id="reserveBtn">
+                  Reserve Now
+                </button>
+                <button class="btn btn-ghost" id="inquireBtn">
+                  Request a Viewing
+                </button>
+              </div>
+
+              <div class="verify" id="verify">
+                <h4>Semiprime Authentication</h4>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--muted);
+                    margin-bottom: 14px;
+                  "
+                >
+                  Each serial is the product of exactly two primes. Enter a
+                  serial to confirm it is genuine — and semiprime.
+                </p>
+                <div class="verify-row">
+                  <input
+                    id="serialInput"
+                    type="text"
+                    inputmode="numeric"
+                    placeholder="Enter serial number"
+                  />
+                  <button id="verifyBtn">Verify</button>
+                </div>
+                <div class="verify-result" id="verifyResult"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="craft">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="label">The Craft</div>
+            <h2>Three hundred hours. One signature.</h2>
+            <p>
+              Each Meridian is assembled by a single watchmaker from first screw
+              to final regulation. The serial is engraved after the movement
+              passes its 72-hour test — and it is chosen to be semiprime.
+            </p>
+          </div>
+          <div class="feature-row">
+            <div class="feature">
+              <div class="num">01</div>
+              <h3>The Caliber</h3>
+              <p>
+                Hand-wound MN-01. 218 components, 31 jewels, 21,600 vph. Côtes
+                de Genève on the bridges, hand-bevelled angles on every visible
+                edge.
+              </p>
+            </div>
+            <div class="feature">
+              <div class="num">02</div>
+              <h3>The Case</h3>
+              <p>
+                Blackened 316L steel, 40mm × 11.2mm. Sapphire crystal with
+                double anti-reflective coating. 50m water resistance. Exhibition
+                caseback in gold.
+              </p>
+            </div>
+            <div class="feature">
+              <div class="num">03</div>
+              <h3>The Serial</h3>
+              <p>
+                Every serial is a semiprime — the product of exactly two primes.
+                It is engraved, logged, and verifiable. The mathematics is the
+                proof of authenticity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="specs">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="label">Specifications</div>
+            <h2>Technical details</h2>
+          </div>
+          <dl class="specs">
+            <div class="spec">
+              <dt>Reference</dt>
+              <dd>MN-MC-01</dd>
+            </div>
+            <div class="spec">
+              <dt>Case</dt>
+              <dd>40mm blackened 316L steel</dd>
+            </div>
+            <div class="spec">
+              <dt>Movement</dt>
+              <dd>Caliber MN-01, hand-wound</dd>
+            </div>
+            <div class="spec">
+              <dt>Power Reserve</dt>
+              <dd>72 hours</dd>
+            </div>
+            <div class="spec">
+              <dt>Crystal</dt>
+              <dd>Sapphire, double AR</dd>
+            </div>
+            <div class="spec">
+              <dt>Water Resistance</dt>
+              <dd>50 metres</dd>
+            </div>
+            <div class="spec">
+              <dt>Strap</dt>
+              <dd>Alligator, steel, or 18k mesh</dd>
+            </div>
+            <div class="spec">
+              <dt>Production</dt>
+              <dd>250 pieces, individually numbered</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <div class="foot-brand">MAISON NOIR</div>
+            <p style="margin-top: 14px; max-width: 34ch">
+              Haute horlogerie, mathematically verified. Geneva · Tokyo · New
+              York.
+            </p>
+          </div>
+          <div class="foot-links">
+            <a href="#product">Collection</a>
+            <a href="#craft">Atelier</a>
+            <a href="#verify">Authentication</a>
+            <a href="#specs">Specifications</a>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>© 2026 Maison Noir SA. All rights reserved.</span>
+          <span>Serial authentication powered by semiprime verification.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---------- Semiprime engine ---------- */
+        function isSemiPrime(n) {
+          if (!Number.isInteger(n) || n < 4) return false;
+          var count = 0,
+            num = n;
+          for (var i = 2; i * i <= num; i++) {
+            while (num % i === 0) {
+              num /= i;
+              count++;
+              if (count > 2) return false;
+            }
+          }
+          if (num > 1) count++;
+          return count === 2;
+        }
+
+        /* ---------- Analog dial ---------- */
+        var dial = document.getElementById("dial");
+        function buildDial() {
+          var frag = document.createDocumentFragment();
+          for (var i = 0; i < 60; i++) {
+            var tick = document.createElement("div");
+            tick.className = "tick " + (i % 5 === 0 ? "major" : "minor");
+            tick.style.transform = "rotate(" + i * 6 + "deg)";
+            var inner = document.createElement("span");
+            tick.appendChild(inner);
+            frag.appendChild(tick);
+          }
+          var hour = document.createElement("div");
+          hour.className = "hand hand-hour";
+          var min = document.createElement("div");
+          min.className = "hand hand-min";
+          var sec = document.createElement("div");
+          sec.className = "hand hand-sec";
+          sec.id = "secHand";
+          frag.appendChild(hour);
+          frag.appendChild(min);
+          frag.appendChild(sec);
+          dial.appendChild(frag);
+          return { hour: hour, min: min, sec: sec };
+        }
+        var hands = buildDial();
+
+        function animate() {
+          var now = new Date();
+          var s = now.getSeconds() + now.getMilliseconds() / 1000;
+          var m = now.getMinutes() + s / 60;
+          var h = (now.getHours() % 12) + m / 60;
+          hands.sec.style.transform = "rotate(" + s * 6 + "deg)";
+          hands.min.style.transform = "rotate(" + m * 6 + "deg)";
+          hands.hour.style.transform = "rotate(" + h * 30 + "deg)";
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+
+        /* ---------- Configurator ---------- */
+        var BASE = 12400;
+        var state = { strap: 0, finish: 0, qty: 1 };
+        var priceEl = document.getElementById("priceDisplay");
+
+        function fmt(n) {
+          return "$" + n.toLocaleString("en-US");
+        }
+        function updatePrice() {
+          var unit = BASE + state.strap + state.finish;
+          priceEl.textContent = fmt(unit * state.qty);
+        }
+
+        function bindOpts(containerId, key) {
+          var container = document.getElementById(containerId);
+          container.addEventListener("click", function (e) {
+            var btn = e.target.closest(".opt");
+            if (!btn) return;
+            container.querySelectorAll(".opt").forEach(function (b) {
+              b.classList.remove("active");
+            });
+            btn.classList.add("active");
+            state[key] = parseInt(btn.getAttribute("data-add"), 10) || 0;
+            updatePrice();
+          });
+        }
+        bindOpts("strapOpts", "strap");
+        bindOpts("finishOpts", "finish");
+
+        var qtyVal = document.getElementById("qtyVal");
+        document
+          .getElementById("qtyPlus")
+          .addEventListener("click", function () {
+            if (state.qty < 9) {
+              state.qty++;
+              qtyVal.textContent = state.qty;
+              updatePrice();
+            }
+          });
+        document
+          .getElementById("qtyMinus")
+          .addEventListener("click", function () {
+            if (state.qty > 1) {
+              state.qty--;
+              qtyVal.textContent = state.qty;
+              updatePrice();
+            }
+          });
+
+        document
+          .getElementById("reserveBtn")
+          .addEventListener("click", function () {
+            var unit = BASE + state.strap + state.finish;
+            alert(
+              "Reservation held.\n\n" +
+                state.qty +
+                " × Meridian Chronograph\nTotal: " +
+                fmt(unit * state.qty) +
+                "\n\nA concierge will contact you within 24 hours."
+            );
+          });
+        document
+          .getElementById("inquireBtn")
+          .addEventListener("click", function () {
+            alert(
+              "Viewing requested. Our atelier will reach out to arrange a private appointment."
+            );
+          });
+
+        /* ---------- Gallery thumbs ---------- */
+        document.querySelectorAll(".thumb").forEach(function (t) {
+          t.addEventListener("click", function () {
+            document.querySelectorAll(".thumb").forEach(function (x) {
+              x.classList.remove("active");
+            });
+            t.classList.add("active");
+          });
+        });
+
+        /* ---------- Serial verification ---------- */
+        var input = document.getElementById("serialInput");
+        var result = document.getElementById("verifyResult");
+        var btn = document.getElementById("verifyBtn");
+
+        function verify() {
+          var raw = input.value.trim();
+          var n = parseInt(raw, 10);
+          if (raw === "" || isNaN(n) || !/^\d+$/.test(raw)) {
+            result.className = "verify-result bad";
+            result.textContent = "Enter a positive integer serial number.";
+            return;
+          }
+          if (n < 1) {
+            result.className = "verify-result bad";
+            result.textContent = "Serial must be a positive integer.";
+            return;
+          }
+          if (isSemiPrime(n)) {
+            result.className = "verify-result ok";
+            result.textContent =
+              "✓ Serial " + n + " is authentic — semiprime verified.";
+          } else {
+            result.className = "verify-result bad";
+            result.textContent =
+              "✕ Serial " +
+              n +
+              " failed semiprime verification. Not a genuine Maison Noir serial.";
+          }
+        }
+
+        btn.addEventListener("click", verify);
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") verify();
+        });
+
+        /* ---------- Smooth anchor offset ---------- */
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            var id = a.getAttribute("href");
+            if (id.length > 1) {
+              var target = document.querySelector(id);
+              if (target) {
+                e.preventDefault();
+                var top =
+                  target.getBoundingClientRect().top + window.pageYOffset - 72;
+                window.scrollTo({ top: top, behavior: "smooth" });
+              }
+            }
+          });
+        });
+
+        updatePrice();
+      })();
+    </script>
+  </body>
+</html>
